@@ -40,6 +40,8 @@ func _physics_process(_delta):
 		if is_sliding:
 			animation = "Slide"
 			speed = SLIDE_SPPED
+			if direction.x == 0 and direction.y == 0:
+				direction = Vector2(1, 0) if not is_fliped else Vector2(0, 1)
 		else:
 			animation = "Run"
 			speed = SPEED
@@ -62,7 +64,6 @@ func _physics_process(_delta):
 
 
 func _on_animated_sprite_animation_finished():
-	print ("Hello WOrlld!")
 	if $AnimatedSprite.animation == "Attack_1":
 		$AnimatedSprite.play("Idle")
 		can_idle = true;
