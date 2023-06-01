@@ -1,14 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://jumxxco0aulg"]
+[gd_scene load_steps=9 format=3 uid="uid://jumxxco0aulg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_awqjm"]
 [ext_resource type="PackedScene" uid="uid://ewlnwhxmt1pr" path="res://player.tscn" id="1_vqsso"]
+[ext_resource type="Texture2D" uid="uid://f4421qhnwlpd" path="res://assets/backgrounds/game_background_4.png" id="2_iem0w"]
 [ext_resource type="PackedScene" uid="uid://dlcrdnpxv8en1" path="res://hud.tscn" id="3_1il2g"]
 [ext_resource type="Script" path="res://FollowView.gd" id="3_nno5j"]
 [ext_resource type="PackedScene" uid="uid://57osg1rlo7vq" path="res://soldier_squad.tscn" id="5_u8v21"]
 [ext_resource type="PackedScene" uid="uid://f2jhoxeq6sr4" path="res://camera_controller.tscn" id="6_07bsl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1jkc"]
+size = Vector2(12024, 804)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_awqjm")
+
+[node name="Background3" type="TextureRect" parent="."]
+offset_left = 3010.0
+offset_top = -583.0
+offset_right = 6850.0
+offset_bottom = 1577.0
+texture = ExtResource("2_iem0w")
+
+[node name="Background2" type="TextureRect" parent="."]
+offset_left = -830.0
+offset_top = -583.0
+offset_right = 3010.0
+offset_bottom = 1577.0
+texture = ExtResource("2_iem0w")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -4670.0
+offset_top = -583.0
+offset_right = -830.0
+offset_bottom = 1577.0
+texture = ExtResource("2_iem0w")
 
 [node name="Player" parent="." instance=ExtResource("1_vqsso")]
 position = Vector2(1042, 564)
@@ -21,6 +46,7 @@ script = ExtResource("3_nno5j")
 [node name="SoldierSquad" parent="." instance=ExtResource("5_u8v21")]
 
 [node name="CameraControllers" type="Node2D" parent="."]
+visible = false
 
 [node name="CameraController" parent="CameraControllers" instance=ExtResource("6_07bsl")]
 position = Vector2(997, 1037)
@@ -37,6 +63,18 @@ scale = Vector2(50, 75)
 [node name="CameraController4" parent="CameraControllers" instance=ExtResource("6_07bsl")]
 position = Vector2(1023, 76)
 scale = Vector2(150, 30)
+
+[node name="Blocker" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker"]
+position = Vector2(1314, -397)
+shape = SubResource("RectangleShape2D_y1jkc")
+
+[node name="Blocker2" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker2"]
+position = Vector2(1243, 1578)
+shape = SubResource("RectangleShape2D_y1jkc")
 
 [connection signal="player_change_hit_points" from="Player" to="." method="_on_player_player_change_hit_points"]
 [connection signal="player_entered" from="CameraControllers/CameraController" to="." method="_on_camera_controller_player_entered_y"]
