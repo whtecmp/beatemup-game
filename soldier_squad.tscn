@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://57osg1rlo7vq"]
+
+[ext_resource type="Script" path="res://soldier_squad.gd" id="1_kq4tx"]
+[ext_resource type="PackedScene" uid="uid://cq2ivgnu8r15g" path="res://basic_enemy_soldier.tscn" id="1_qxq7g"]
+
+[node name="SoldierSquad" type="Node2D"]
+script = ExtResource("1_kq4tx")
+
+[node name="BasicEnemySoldier" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(725, 837)
+
+[node name="BasicEnemySoldier2" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(1532, 789)
+
+[node name="BasicEnemySoldier3" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(1693, 553)
+
+[node name="BasicEnemySoldier4" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(1543, 287)
+
+[node name="BasicEnemySoldier5" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(723, 129)
+
+[node name="BasicEnemySoldier6" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(388, 581)
+
+[node name="BasicEnemySoldier7" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(762, 539)
+
+[node name="SecondEnemySoldier1" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(1082, 783)
+
+[node name="SecondEnemySoldier2" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(1243, 349)
+
+[node name="SecondEnemySoldier3" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(497, 304)
+
+[node name="SecondEnemySoldier4" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(956, 364)
+
+[node name="SecondEnemySoldier5" parent="." instance=ExtResource("1_qxq7g")]
+position = Vector2(359, 984)

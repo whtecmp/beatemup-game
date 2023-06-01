@@ -1,56 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://jumxxco0aulg"]
+[gd_scene load_steps=7 format=3 uid="uid://jumxxco0aulg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_awqjm"]
 [ext_resource type="PackedScene" uid="uid://ewlnwhxmt1pr" path="res://player.tscn" id="1_vqsso"]
-[ext_resource type="PackedScene" uid="uid://cq2ivgnu8r15g" path="res://basic_enemy_soldier.tscn" id="2_yjwh3"]
 [ext_resource type="PackedScene" uid="uid://dlcrdnpxv8en1" path="res://hud.tscn" id="3_1il2g"]
 [ext_resource type="Script" path="res://FollowView.gd" id="3_nno5j"]
+[ext_resource type="PackedScene" uid="uid://57osg1rlo7vq" path="res://soldier_squad.tscn" id="5_u8v21"]
+[ext_resource type="PackedScene" uid="uid://f2jhoxeq6sr4" path="res://camera_controller.tscn" id="6_07bsl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_awqjm")
 
 [node name="Player" parent="." instance=ExtResource("1_vqsso")]
-position = Vector2(1327, 556)
-
-[node name="BasicEnemySoldier" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(725, 837)
+position = Vector2(1042, 564)
 
 [node name="FollowView" type="Node2D" parent="."]
 script = ExtResource("3_nno5j")
 
 [node name="HUD" parent="FollowView" instance=ExtResource("3_1il2g")]
 
-[node name="BasicEnemySoldier2" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(1532, 789)
+[node name="SoldierSquad" parent="." instance=ExtResource("5_u8v21")]
 
-[node name="BasicEnemySoldier3" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(1693, 553)
+[node name="CameraControllers" type="Node2D" parent="."]
 
-[node name="BasicEnemySoldier4" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(1543, 287)
+[node name="CameraController" parent="CameraControllers" instance=ExtResource("6_07bsl")]
+position = Vector2(997, 1037)
+scale = Vector2(150, 30)
 
-[node name="BasicEnemySoldier5" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(723, 129)
+[node name="CameraController2" parent="CameraControllers" instance=ExtResource("6_07bsl")]
+position = Vector2(65, 618)
+scale = Vector2(50, 75)
 
-[node name="BasicEnemySoldier6" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(388, 581)
+[node name="CameraController3" parent="CameraControllers" instance=ExtResource("6_07bsl")]
+position = Vector2(1749, 547)
+scale = Vector2(50, 75)
 
-[node name="BasicEnemySoldier7" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(762, 539)
-
-[node name="SecondEnemySoldier1" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(1082, 783)
-
-[node name="SecondEnemySoldier2" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(1243, 349)
-
-[node name="SecondEnemySoldier3" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(497, 304)
-
-[node name="SecondEnemySoldier4" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(956, 364)
-
-[node name="SecondEnemySoldier5" parent="." instance=ExtResource("2_yjwh3")]
-position = Vector2(359, 984)
+[node name="CameraController4" parent="CameraControllers" instance=ExtResource("6_07bsl")]
+position = Vector2(1023, 76)
+scale = Vector2(150, 30)
 
 [connection signal="player_change_hit_points" from="Player" to="." method="_on_player_player_change_hit_points"]
+[connection signal="player_entered" from="CameraControllers/CameraController" to="." method="_on_camera_controller_player_entered_y"]
+[connection signal="player_exited" from="CameraControllers/CameraController" to="." method="_on_camera_controller_player_exited_y"]
+[connection signal="player_entered" from="CameraControllers/CameraController2" to="." method="_on_camera_controller_player_entered_x"]
+[connection signal="player_exited" from="CameraControllers/CameraController2" to="." method="_on_camera_controller_player_exited_x"]
+[connection signal="player_entered" from="CameraControllers/CameraController3" to="." method="_on_camera_controller_player_entered_x"]
+[connection signal="player_exited" from="CameraControllers/CameraController3" to="." method="_on_camera_controller_player_exited_x"]
+[connection signal="player_entered" from="CameraControllers/CameraController4" to="." method="_on_camera_controller_player_entered_y"]
+[connection signal="player_exited" from="CameraControllers/CameraController4" to="." method="_on_camera_controller_player_exited_y"]
