@@ -5,7 +5,7 @@ signal player_change_hit_points(new_value)
 var hits = 100;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if $PlayerBody.attack_is_on:
 		var in_range_bodies;
 		if not $PlayerBody.is_fliped:

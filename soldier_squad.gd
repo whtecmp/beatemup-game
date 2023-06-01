@@ -8,8 +8,3 @@ func _ready():
 		get_node("SecondEnemySoldier"+str(i+1)).soldier_type = "Soldier2";
 		get_node("SecondEnemySoldier"+str(i+1)).get_node("Mob/"+old_type+"Animation").visible = false;
 		get_node("SecondEnemySoldier"+str(i+1)).get_node("Mob/Soldier2Animation").visible = true;
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jumxxco0aulg"]
+[gd_scene load_steps=11 format=3 uid="uid://jumxxco0aulg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_awqjm"]
 [ext_resource type="PackedScene" uid="uid://ewlnwhxmt1pr" path="res://player.tscn" id="1_vqsso"]
@@ -10,6 +10,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1jkc"]
 size = Vector2(12024, 804)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sde8w"]
+vertices = PackedVector2Array(-4670, 15, 6837, 30, 6838, 1152, -4650, 1160)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4670, 15, 6837, 30, 6838, 1152, -4650, 1160)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdxe5"]
+size = Vector2(407, 776.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_awqjm")
@@ -44,6 +52,7 @@ script = ExtResource("3_nno5j")
 [node name="HUD" parent="FollowView" instance=ExtResource("3_1il2g")]
 
 [node name="SoldierSquad" parent="." instance=ExtResource("5_u8v21")]
+position = Vector2(72, -24)
 
 [node name="CameraControllers" type="Node2D" parent="."]
 visible = false
@@ -75,6 +84,29 @@ shape = SubResource("RectangleShape2D_y1jkc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker2"]
 position = Vector2(1243, 1578)
 shape = SubResource("RectangleShape2D_y1jkc")
+
+[node name="SoldierSquad2" parent="." instance=ExtResource("5_u8v21")]
+position = Vector2(2390, 46)
+
+[node name="SoldierSquad3" parent="." instance=ExtResource("5_u8v21")]
+position = Vector2(-2232, 19)
+
+[node name="WalkableRegion" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_sde8w")
+
+[node name="Blocker3" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker3"]
+position = Vector2(2153, 564)
+shape = SubResource("RectangleShape2D_pdxe5")
+
+[node name="ColorRect" type="ColorRect" parent="Blocker3"]
+offset_left = 1949.0
+offset_top = 176.0
+offset_right = 2357.0
+offset_bottom = 956.0
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Blocker3"]
 
 [connection signal="player_change_hit_points" from="Player" to="." method="_on_player_player_change_hit_points"]
 [connection signal="player_entered" from="CameraControllers/CameraController" to="." method="_on_camera_controller_player_entered_y"]

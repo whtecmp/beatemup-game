@@ -7,37 +7,37 @@
 script = ExtResource("1_kq4tx")
 
 [node name="BasicEnemySoldier" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(725, 837)
+position = Vector2(109, 921)
 
 [node name="BasicEnemySoldier2" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(1532, 789)
+position = Vector2(1505, 967)
 
 [node name="BasicEnemySoldier3" parent="." instance=ExtResource("1_qxq7g")]
 position = Vector2(1693, 553)
 
 [node name="BasicEnemySoldier4" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(1543, 287)
+position = Vector2(1580, 378)
 
 [node name="BasicEnemySoldier5" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(723, 129)
+position = Vector2(1681, 132)
 
 [node name="BasicEnemySoldier6" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(388, 581)
+position = Vector2(486, 453)
 
 [node name="BasicEnemySoldier7" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(762, 539)
+position = Vector2(1821, 748)
 
 [node name="SecondEnemySoldier1" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(1082, 783)
+position = Vector2(440, 756)
 
 [node name="SecondEnemySoldier2" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(1243, 349)
+position = Vector2(254, 577)
 
 [node name="SecondEnemySoldier3" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(497, 304)
+position = Vector2(326, 156)
 
 [node name="SecondEnemySoldier4" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(956, 364)
+position = Vector2(1410, 724)
 
 [node name="SecondEnemySoldier5" parent="." instance=ExtResource("1_qxq7g")]
-position = Vector2(359, 984)
+position = Vector2(114, 341)

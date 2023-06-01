@@ -21,6 +21,10 @@ var attack_is_on = false;
 var whoami;
 var is_dying = false;
 
+func _ready():
+	$NavigationAgent2D.target_desired_distance = 4;
+	$NavigationAgent2D.path_desired_distance = 4;
+
 func assess_relative_position_to_objective(objective, min_distance_threshold_x, min_distance_threshold_y, max_distance_threshold):
 	if not objective:
 		return Vector2(0, 0);
@@ -52,8 +56,9 @@ func manage_attack():
 
 func _physics_process(delta):
 	walk = true;
-	wants_attack = Vector2(0, 0)
-	var relative_position_to_objective = assess_relative_position_to_objective(get_tree().get_root().get_node("Main/Player/PlayerBody"), 120, 20, 1000);
+	wants_attack = Vector2(0, 0);
+	var player = get_tree().get_root().get_node("Main/Player/PlayerBody");
+	var relative_position_to_objective = assess_relative_position_to_objective(player, 120, 20, 1000);
 	{
 		-1: func (_self):
 			_self.direction.x = -1,
@@ -95,9 +100,16 @@ func _physics_process(delta):
 	
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if walk and not is_attack_initiated and not is_dying:
-		if wants_attack.x:
-			direction.x = -1;
-		velocity = direction.normalized() * SPEED
+		$NavigationAgent2D.target_position = player.global_position;
+		var current_agent_position: Vector2 = global_position
+		var next_path_position: Vector2 = $NavigationAgent2D.get_next_path_position()
+		var new_velocity: Vector2 = next_path_position - current_agent_position
+		new_velocity = new_velocity.normalized()
+		new_velocity = new_velocity * SPEED
+		velocity = new_velocity
+		# if wants_attack.x:
+		# 	direction.x = -1;
+		# velocity = direction.normalized() * SPEED
 		play_animation.call("Run")
 	elif not is_dying:
 		if can_idle:

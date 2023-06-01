@@ -330,21 +330,21 @@ script = ExtResource("1_lwqld")
 
 [node name="Mob" parent="." instance=ExtResource("1_h45kg")]
 position = Vector2(-3.47826, -0.869565)
-scale = Vector2(1.8, 1.8)
+scale = Vector2(0.65, 0.65)
 
 [node name="Soldier2Animation" type="AnimatedSprite2D" parent="Mob"]
 visible = false
-position = Vector2(-5.31401, -17.3913)
-scale = Vector2(0.638889, 0.638889)
+position = Vector2(-14.7157, -48.1605)
+scale = Vector2(1.76923, 1.76923)
 sprite_frames = SubResource("SpriteFrames_fnkfq")
 animation = &"Run"
 autoplay = "Idle"
 
 [node name="SoldierAnimation" type="AnimatedSprite2D" parent="Mob"]
-position = Vector2(5.55556, -13.285)
-scale = Vector2(0.555556, 0.555556)
+position = Vector2(15.3846, -36.7892)
+scale = Vector2(1.53846, 1.53846)
 sprite_frames = SubResource("SpriteFrames_mpx0i")
-animation = &"Dying"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Detectors" type="Node2D" parent="."]

@@ -12,7 +12,7 @@ func _ready():
 	last_player_pos = $Player/PlayerBody.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	update_camera()
 	last_player_pos = $Player/PlayerBody.position
 
