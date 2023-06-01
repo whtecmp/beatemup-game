@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://byrp17dpf0yw"]
+
+[ext_resource type="Script" path="res://mob.gd" id="1_bk1kh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68uyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o20a8"]
+
+[node name="Mob" type="CharacterBody2D"]
+script = ExtResource("1_bk1kh")
+
+[node name="MobArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobArea"]
+shape = SubResource("RectangleShape2D_68uyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o20a8")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="AttackIsOnTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AttackIsOnTimer" to="." method="_on_attack_is_on_timer_timeout"]

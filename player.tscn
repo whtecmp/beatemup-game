@@ -110,22 +110,19 @@ script = ExtResource("2_vfihl")
 [node name="PlayerArea" type="Area2D" parent="PlayerBody"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerArea"]
-position = Vector2(155, 103)
 shape = SubResource("RectangleShape2D_axsms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
-position = Vector2(155, 103)
 shape = SubResource("RectangleShape2D_b1uv6")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="PlayerBody"]
-position = Vector2(155, 92)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_sm67o")
 animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CanSlideTimer" type="Timer" parent="PlayerBody"]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [node name="SlidingTimer" type="Timer" parent="PlayerBody"]
@@ -135,11 +132,11 @@ one_shot = true
 [node name="Detectors" type="Node2D" parent="."]
 
 [node name="AttackDetectorLeft" parent="Detectors" instance=ExtResource("20_d4gbw")]
-position = Vector2(90, 105)
+position = Vector2(-65, -1)
 scale = Vector2(2, 6.5)
 
 [node name="AttackDetectorRight" parent="Detectors" instance=ExtResource("20_d4gbw")]
-position = Vector2(220, 105)
+position = Vector2(64, -1)
 scale = Vector2(2, 6.5)
 
 [connection signal="animation_finished" from="PlayerBody/AnimatedSprite" to="PlayerBody" method="_on_animated_sprite_animation_finished"]
