@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://jumxxco0aulg"]
+[gd_scene load_steps=6 format=3 uid="uid://jumxxco0aulg"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_awqjm"]
 [ext_resource type="PackedScene" uid="uid://ewlnwhxmt1pr" path="res://player.tscn" id="1_vqsso"]
 [ext_resource type="PackedScene" uid="uid://cq2ivgnu8r15g" path="res://basic_enemy_soldier.tscn" id="2_yjwh3"]
+[ext_resource type="PackedScene" uid="uid://dlcrdnpxv8en1" path="res://hud.tscn" id="3_1il2g"]
+[ext_resource type="Script" path="res://FollowView.gd" id="3_nno5j"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_awqjm")
 
 [node name="Player" parent="." instance=ExtResource("1_vqsso")]
 position = Vector2(1327, 556)
 
 [node name="BasicEnemySoldier" parent="." instance=ExtResource("2_yjwh3")]
 position = Vector2(105, 70)
+
+[node name="FollowView" type="Node2D" parent="."]
+script = ExtResource("3_nno5j")
+
+[node name="HUD" parent="FollowView" instance=ExtResource("3_1il2g")]

@@ -21,11 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://cdk0b5622r7gb" path="res://assets/player/adventurer-slide-01.png" id="17_winax"]
 [ext_resource type="PackedScene" uid="uid://bd0py5kuig1bu" path="res://attack_detector.tscn" id="20_d4gbw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_axsms"]
-size = Vector2(89, 127)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7tq3u"]
+radius = 35.0
+height = 117.5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1uv6"]
-size = Vector2(86, 126)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vsuqc"]
+radius = 35.0
+height = 117.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sm67o"]
 animations = [{
@@ -47,7 +49,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_1",
-"speed": 10.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -110,15 +112,17 @@ script = ExtResource("2_vfihl")
 [node name="PlayerArea" type="Area2D" parent="PlayerBody"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/PlayerArea"]
-shape = SubResource("RectangleShape2D_axsms")
+position = Vector2(0, 10.5)
+shape = SubResource("CapsuleShape2D_7tq3u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
-shape = SubResource("RectangleShape2D_b1uv6")
+position = Vector2(0, 10.5)
+shape = SubResource("CapsuleShape2D_vsuqc")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="PlayerBody"]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_sm67o")
-animation = &"Idle"
+animation = &"Attack_1"
 autoplay = "Idle"
 
 [node name="CanSlideTimer" type="Timer" parent="PlayerBody"]
@@ -129,16 +133,21 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="InitiateAttackTimer" type="Timer" parent="PlayerBody"]
+wait_time = 0.15
+one_shot = true
+
 [node name="Detectors" type="Node2D" parent="."]
 
 [node name="AttackDetectorLeft" parent="Detectors" instance=ExtResource("20_d4gbw")]
-position = Vector2(-65, -1)
-scale = Vector2(2, 6.5)
+position = Vector2(-62, 11)
+scale = Vector2(1.692, 5.5)
 
 [node name="AttackDetectorRight" parent="Detectors" instance=ExtResource("20_d4gbw")]
-position = Vector2(64, -1)
-scale = Vector2(2, 6.5)
+position = Vector2(62, 10)
+scale = Vector2(1.692, 5.5)
 
 [connection signal="animation_finished" from="PlayerBody/AnimatedSprite" to="PlayerBody" method="_on_animated_sprite_animation_finished"]
 [connection signal="timeout" from="PlayerBody/CanSlideTimer" to="PlayerBody" method="_on_can_slide_timer_timeout"]
 [connection signal="timeout" from="PlayerBody/SlidingTimer" to="PlayerBody" method="_on_sliding_timer_timeout"]
+[connection signal="timeout" from="PlayerBody/InitiateAttackTimer" to="PlayerBody" method="_on_initiate_attack_timer_timeout"]

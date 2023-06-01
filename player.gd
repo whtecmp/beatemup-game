@@ -1,11 +1,26 @@
 extends Node2D
 
+signal player_change_hit_points(new_value)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+var hits = 100;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _process(delta):
+	if $PlayerBody.is_attacking:
+		var in_range_bodies;
+		if not $PlayerBody.is_fliped:
+			in_range_bodies = $Detectors/AttackDetectorRight.get_overlapping_bodies()
+		else:
+			in_range_bodies = $Detectors/AttackDetectorLeft.get_overlapping_bodies()
+		print (in_range_bodies)
+		for body in in_range_bodies:
+			if body.has_method("hit_by"):
+				body.hit_by("player")
+	if hits <= 0:
+		visible = false;
+
+
+func hit_by(who):
+	if who == "basic_enemy_soldier":
+		hits -= 2;
+		emit_signal("player_change_hit_points", hits);

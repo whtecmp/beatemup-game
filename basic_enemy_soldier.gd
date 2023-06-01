@@ -16,8 +16,10 @@ func _ready():
 
 func hit_by(who):
 	if who == "player":
-		queue_free();
+		$Mob.is_dying = true;
 
 func _on_soldier_animation_animation_finished():
 	if $Mob/SoldierAnimation.animation == "Attack":
 		$Mob.attack_finished();
+	elif $Mob/SoldierAnimation.animation == "Dying":
+		$Mob.die();

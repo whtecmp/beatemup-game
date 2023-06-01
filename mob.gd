@@ -19,6 +19,7 @@ var flip;
 var look_direction = RIGHT;
 var attack_is_on = false;
 var whoami;
+var is_dying = false;
 
 func assess_relative_position_to_objective(objective, min_distance_threshold_x, min_distance_threshold_y, max_distance_threshold):
 	if not objective:
@@ -82,7 +83,7 @@ func _physics_process(_delta):
 			_self.wants_attack.y = 1;
 	}[int(relative_position_to_objective.y)].call(self)
 	
-	if wants_attack.x and wants_attack.y and not is_attacking and not attack_idle:
+	if wants_attack.x and wants_attack.y and not is_attacking and not attack_idle and not is_dying:
 		walk = false;
 		wants_attack = Vector2(0, 0);
 		play_animation.call("Attack");
@@ -92,12 +93,12 @@ func _physics_process(_delta):
 		$AttackTimer.start()
 	
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if walk and not is_attacking:
+	if walk and not is_attacking and not is_dying:
 		if wants_attack.x:
 			direction.x = -1;
 		velocity = direction.normalized() * SPEED
 		play_animation.call("Run")
-	else:
+	elif not is_dying:
 		if can_idle:
 			play_animation.call("Idle")
 		velocity.x = 0 # move_toward(velocity.x, 0, SPEED)
@@ -107,6 +108,9 @@ func _physics_process(_delta):
 	elif walk and not is_attacking and direction.x < 0:
 		flip.call(true);
 
+	if is_dying:
+		play_animation.call("Dying");
+	
 	manage_attack()
 
 	if velocity.x < 0:
@@ -123,6 +127,8 @@ func attack_finished():
 	can_idle = true;
 	is_attacking = false;
 
+func die():
+	queue_free();
 
 func hit_by(who):
 	get_node("..").hit_by(who);
