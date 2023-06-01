@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
+const SPEED = 400.0
 
 # enum {TOO_CLOSE_LEFT, TOO_CLOSE_RIGHT, TOO_FAR, LEFT, RIGHT, UP, DOWN, TOO_CLOSE_UP, TOO_CLOSE_DOWN }
 

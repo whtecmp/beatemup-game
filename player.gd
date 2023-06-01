@@ -25,5 +25,5 @@ func die():
 
 func hit_by(who):
 	if who == "basic_enemy_soldier":
-		hits -= 2;
+		hits -= 3;
 		emit_signal("player_change_hit_points", hits);
