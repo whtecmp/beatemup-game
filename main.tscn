@@ -19,3 +19,5 @@ position = Vector2(105, 70)
 script = ExtResource("3_nno5j")
 
 [node name="HUD" parent="FollowView" instance=ExtResource("3_1il2g")]
+
+[connection signal="player_change_hit_points" from="Player" to="." method="_on_player_player_change_hit_points"]

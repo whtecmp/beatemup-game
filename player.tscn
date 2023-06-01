@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ewlnwhxmt1pr"]
+[gd_scene load_steps=31 format=3 uid="uid://ewlnwhxmt1pr"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_460gp"]
 [ext_resource type="Texture2D" uid="uid://cixk8mfx06y44" path="res://assets/player/adventurer-attack1-00.png" id="1_p8hgm"]
@@ -9,13 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://bo1fw1va1jcb4" path="res://assets/player/adventurer-attack1-04.png" id="5_dcow3"]
 [ext_resource type="Texture2D" uid="uid://k2igrcc31kx3" path="res://assets/player/adventurer-idle-00.png" id="6_2okeo"]
 [ext_resource type="Texture2D" uid="uid://by6aarhhtvr8b" path="res://assets/player/adventurer-idle-01.png" id="7_l57ta"]
+[ext_resource type="Texture2D" uid="uid://dnn3d0v22vfu5" path="res://assets/player/adventurer-die-00.png" id="8_eo72f"]
 [ext_resource type="Texture2D" uid="uid://dt4gftfl0cjwq" path="res://assets/player/adventurer-idle-02.png" id="8_ikd0h"]
+[ext_resource type="Texture2D" uid="uid://cnbs14gg1445u" path="res://assets/player/adventurer-die-01.png" id="9_nms3u"]
 [ext_resource type="Texture2D" uid="uid://qhq7nohs6j2c" path="res://assets/player/adventurer-idle-03.png" id="9_vsgkw"]
+[ext_resource type="Texture2D" uid="uid://u28sjbbhvors" path="res://assets/player/adventurer-die-02.png" id="10_hdgbo"]
 [ext_resource type="Texture2D" uid="uid://clghp78nw4hwe" path="res://assets/player/adventurer-run-00.png" id="10_pfvgh"]
+[ext_resource type="Texture2D" uid="uid://c1k10vwh6xoqf" path="res://assets/player/adventurer-die-03.png" id="11_4j51x"]
 [ext_resource type="Texture2D" uid="uid://cupdy54xo7yte" path="res://assets/player/adventurer-run-01.png" id="11_osyfn"]
+[ext_resource type="Texture2D" uid="uid://dqsqx3h6fvc6s" path="res://assets/player/adventurer-die-04.png" id="12_3kptq"]
 [ext_resource type="Texture2D" uid="uid://d2ft6wwaushhn" path="res://assets/player/adventurer-run-02.png" id="12_54vyu"]
 [ext_resource type="Texture2D" uid="uid://cqlsei4wgadpg" path="res://assets/player/adventurer-run-03.png" id="13_whhci"]
+[ext_resource type="Texture2D" uid="uid://ct6e0a7b0we7t" path="res://assets/player/adventurer-die-05.png" id="13_xe262"]
 [ext_resource type="Texture2D" uid="uid://dsugi1pcxsci0" path="res://assets/player/adventurer-run-04.png" id="14_gxm4u"]
+[ext_resource type="Texture2D" uid="uid://ciglh1o0vwq3r" path="res://assets/player/adventurer-die-06.png" id="14_s7p84"]
 [ext_resource type="Texture2D" uid="uid://dw4xldx75hrb7" path="res://assets/player/adventurer-run-05.png" id="15_1pnq8"]
 [ext_resource type="Texture2D" uid="uid://ddxbg8udhids" path="res://assets/player/adventurer-slide-00.png" id="16_uw5q8"]
 [ext_resource type="Texture2D" uid="uid://cdk0b5622r7gb" path="res://assets/player/adventurer-slide-01.png" id="17_winax"]
@@ -50,6 +57,32 @@ animations = [{
 "loop": false,
 "name": &"Attack_1",
 "speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_eo72f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nms3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hdgbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4j51x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3kptq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xe262")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_s7p84")
+}],
+"loop": false,
+"name": &"Dying",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -122,8 +155,10 @@ shape = SubResource("CapsuleShape2D_vsuqc")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="PlayerBody"]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_sm67o")
-animation = &"Attack_1"
+animation = &"Dying"
 autoplay = "Idle"
+frame = 6
+frame_progress = 1.0
 
 [node name="CanSlideTimer" type="Timer" parent="PlayerBody"]
 wait_time = 0.3

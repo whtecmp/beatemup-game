@@ -8,7 +8,7 @@ const SPEED = 200.0
 enum {LEFT, RIGHT}
 
 var wants_attack = Vector2(0, 0);
-var is_attacking = false;
+var is_attack_initiated = false;
 var attack_idle = false;
 var can_idle = true;
 var walk = false;
@@ -45,7 +45,7 @@ func manage_attack():
 		if look_direction == RIGHT:
 			in_range_bodies = get_node("../Detectors/AttackDetectorRight").get_overlapping_bodies()
 		elif look_direction == LEFT:
-			in_range_bodies = get_node("../Detectors/AttackDetectorLeft").get_overlapping_bodies()
+			in_range_bodies = get_node("../Detectors/AttackDetectorLeft").get_overlapping_bodies() 
 		for body in in_range_bodies:
 			if body.has_method("hit_by"):
 				body.hit_by(whoami)
@@ -83,17 +83,18 @@ func _physics_process(_delta):
 			_self.wants_attack.y = 1;
 	}[int(relative_position_to_objective.y)].call(self)
 	
-	if wants_attack.x and wants_attack.y and not is_attacking and not attack_idle and not is_dying:
+	if wants_attack.x and wants_attack.y and not is_attack_initiated and not attack_idle and not is_dying:
 		walk = false;
 		wants_attack = Vector2(0, 0);
 		play_animation.call("Attack");
-		is_attacking = true;
+		is_attack_initiated = true;
 		can_idle = false;
 		attack_idle = true;
-		$AttackTimer.start()
+		$AttackTimer.start();
+		$InitiateAttackTimer.start();
 	
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if walk and not is_attacking and not is_dying:
+	if walk and not is_attack_initiated and not is_dying:
 		if wants_attack.x:
 			direction.x = -1;
 		velocity = direction.normalized() * SPEED
@@ -103,9 +104,9 @@ func _physics_process(_delta):
 			play_animation.call("Idle")
 		velocity.x = 0 # move_toward(velocity.x, 0, SPEED)
 		velocity.y = 0 # move_toward(velocity.y, 0, SPEED)
-	if walk and not is_attacking and direction.x > 0:
+	if walk and not is_attack_initiated and direction.x > 0:
 		flip.call(false);
-	elif walk and not is_attacking and direction.x < 0:
+	elif walk and not is_attack_initiated and direction.x < 0:
 		flip.call(true);
 
 	if is_dying:
@@ -125,7 +126,8 @@ func _physics_process(_delta):
 func attack_finished():
 	play_animation.call("Idle")
 	can_idle = true;
-	is_attacking = false;
+	is_attack_initiated = false;
+	attack_is_on = false;
 
 func die():
 	queue_free();
@@ -136,5 +138,5 @@ func hit_by(who):
 func _on_attack_timer_timeout():
 	attack_idle = false;
 
-func _on_attack_is_on_timer_timeout():
-	attack_is_on = false;
+func _on_initiate_attack_timer_timeout():
+	attack_is_on = true;

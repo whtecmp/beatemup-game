@@ -12,7 +12,7 @@ func _ready():
 		custom_speed = custom_speed * (-1 if backwards else 1);
 		_self.get_node("Mob/SoldierAnimation").play(anim, custom_speed, backwards);
 	$Mob.flip = flip;
-	$Mob.whoami = "baasic_enemy_soldier"
+	$Mob.whoami = "basic_enemy_soldier"
 
 func hit_by(who):
 	if who == "player":

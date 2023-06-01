@@ -175,17 +175,19 @@ scale = Vector2(2.3, 2.3)
 position = Vector2(2.83554, -10.775)
 scale = Vector2(0.434783, 0.434783)
 sprite_frames = SubResource("SpriteFrames_mpx0i")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="Detectors" type="Node2D" parent="."]
 
 [node name="AttackDetectorLeft" parent="Detectors" instance=ExtResource("5_h4jwh")]
-position = Vector2(-27.3913, -0.434783)
-scale = Vector2(0.75, 2.3)
+position = Vector2(-35.6522, 2.98023e-08)
+scale = Vector2(1.25, 2.3)
 
 [node name="AttackDetectorRight" parent="Detectors" instance=ExtResource("5_h4jwh")]
-position = Vector2(26.5217, -0.434779)
-scale = Vector2(0.75, 2.3)
+position = Vector2(35.6522, 1.19209e-07)
+scale = Vector2(1.25, 2.3)
 
 [connection signal="animation_finished" from="Mob/SoldierAnimation" to="." method="_on_soldier_animation_animation_finished"]
