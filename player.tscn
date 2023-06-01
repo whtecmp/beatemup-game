@@ -155,10 +155,8 @@ shape = SubResource("CapsuleShape2D_vsuqc")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="PlayerBody"]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_sm67o")
-animation = &"Dying"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="CanSlideTimer" type="Timer" parent="PlayerBody"]
 wait_time = 0.3

@@ -111,8 +111,8 @@ func _physics_process(_delta):
 
 	if is_dying:
 		play_animation.call("Dying");
-	
-	manage_attack()
+	else:
+		manage_attack()
 
 	if velocity.x < 0:
 		look_direction = LEFT;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cq2ivgnu8r15g"]
+[gd_scene load_steps=52 format=3 uid="uid://cq2ivgnu8r15g"]
 
 [ext_resource type="PackedScene" uid="uid://byrp17dpf0yw" path="res://mob.tscn" id="1_h45kg"]
 [ext_resource type="Script" path="res://basic_enemy_soldier.gd" id="1_lwqld"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://ch8w8h0kqenr3" path="res://assets/basic_enemy_soldier/Run.png" id="4_3xoin"]
 [ext_resource type="Texture2D" uid="uid://ba7evwxujw08w" path="res://assets/basic_enemy_soldier/Dead.png" id="4_kqryt"]
 [ext_resource type="PackedScene" uid="uid://bd0py5kuig1bu" path="res://attack_detector.tscn" id="5_h4jwh"]
+[ext_resource type="Texture2D" uid="uid://dylrv43k27uve" path="res://assets/basic_enemy_soldier_2/Attack_1.png" id="7_12fba"]
+[ext_resource type="Texture2D" uid="uid://60fyodx4y212" path="res://assets/basic_enemy_soldier_2/Dead.png" id="8_swqux"]
+[ext_resource type="Texture2D" uid="uid://8ggf2jd8pmd7" path="res://assets/basic_enemy_soldier_2/Idle.png" id="9_pk43q"]
+[ext_resource type="Texture2D" uid="uid://cob5wnypo64w6" path="res://assets/basic_enemy_soldier_2/Run.png" id="10_s7urn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph1bm"]
 atlas = ExtResource("2_1xuam")
@@ -164,6 +168,162 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aykww"]
+atlas = ExtResource("7_12fba")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s47cf"]
+atlas = ExtResource("7_12fba")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4x5e"]
+atlas = ExtResource("7_12fba")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rmbo"]
+atlas = ExtResource("7_12fba")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5362"]
+atlas = ExtResource("8_swqux")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ifc"]
+atlas = ExtResource("8_swqux")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eew1w"]
+atlas = ExtResource("8_swqux")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnncp"]
+atlas = ExtResource("8_swqux")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mknge"]
+atlas = ExtResource("9_pk43q")
+region = Rect2(0, 0, 84, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkvpn"]
+atlas = ExtResource("9_pk43q")
+region = Rect2(99, 0, 84, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2bjt"]
+atlas = ExtResource("9_pk43q")
+region = Rect2(198, 0, 84, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n45h7"]
+atlas = ExtResource("9_pk43q")
+region = Rect2(297, 0, 84, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qli1x"]
+atlas = ExtResource("9_pk43q")
+region = Rect2(396, 0, 84, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hexy"]
+atlas = ExtResource("10_s7urn")
+region = Rect2(0, 0, 91, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma8ej"]
+atlas = ExtResource("10_s7urn")
+region = Rect2(96, 0, 91, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_664i4"]
+atlas = ExtResource("10_s7urn")
+region = Rect2(192, 0, 91, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sicps"]
+atlas = ExtResource("10_s7urn")
+region = Rect2(288, 0, 91, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y2be"]
+atlas = ExtResource("10_s7urn")
+region = Rect2(384, 0, 91, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eship"]
+atlas = ExtResource("10_s7urn")
+region = Rect2(480, 0, 91, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnkfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aykww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s47cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4x5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rmbo")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5362")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82ifc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eew1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnncp")
+}],
+"loop": false,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mknge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkvpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2bjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n45h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qli1x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hexy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma8ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_664i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sicps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y2be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eship")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
 [node name="BasicEnemySoldier" type="Node2D"]
 scale = Vector2(2.3, 2.3)
 script = ExtResource("1_lwqld")
@@ -172,13 +332,20 @@ script = ExtResource("1_lwqld")
 scale = Vector2(2.3, 2.3)
 
 [node name="SoldierAnimation" type="AnimatedSprite2D" parent="Mob"]
+visible = false
 position = Vector2(2.83554, -10.775)
 scale = Vector2(0.434783, 0.434783)
 sprite_frames = SubResource("SpriteFrames_mpx0i")
-animation = &"Attack"
+animation = &"Dying"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
+
+[node name="Soldier2Animation" type="AnimatedSprite2D" parent="Mob"]
+visible = false
+position = Vector2(-5.67108, -13.9887)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_fnkfq")
+animation = &"Run"
+autoplay = "Idle"
 
 [node name="Detectors" type="Node2D" parent="."]
 
@@ -191,3 +358,4 @@ position = Vector2(35.6522, 1.19209e-07)
 scale = Vector2(1.25, 2.3)
 
 [connection signal="animation_finished" from="Mob/SoldierAnimation" to="." method="_on_soldier_animation_animation_finished"]
+[connection signal="animation_finished" from="Mob/Soldier2Animation" to="." method="_on_soldier_animation_animation_finished"]
