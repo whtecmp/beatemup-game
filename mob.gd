@@ -50,7 +50,7 @@ func manage_attack():
 			if body.has_method("hit_by"):
 				body.hit_by(whoami)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	walk = true;
 	wants_attack = Vector2(0, 0)
 	var relative_position_to_objective = assess_relative_position_to_objective(get_tree().get_root().get_node("Main/Player/PlayerBody"), 120, 20, 1000);
@@ -119,7 +119,7 @@ func _physics_process(_delta):
 	elif velocity.x > 0: 
 		look_direction = RIGHT;
 	var last_position = position;
-	move_and_slide();
+	move_and_collide(velocity * delta);
 	var mob = get_node("..");
 	mob.get_node("Detectors").position += position - last_position;
 

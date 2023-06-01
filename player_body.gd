@@ -16,7 +16,7 @@ var is_sliding = false;
 var can_slide = true;
 var is_dying = false;
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not is_dying:
 		# Handle Slide
@@ -59,7 +59,7 @@ func _physics_process(_delta):
 				$AnimatedSprite.play("Idle") 
 		$AnimatedSprite.flip_h = is_fliped;
 	var last_position = position;
-	move_and_slide();
+	move_and_collide(velocity * delta);
 	var player = get_node("..");
 	player.get_node("Detectors").position += position - last_position;
 
